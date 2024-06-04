@@ -6,9 +6,9 @@
   <meta content="w3c/CG-DRAFT" name="w3c-status">
   <link href="https://www.w3.org/StyleSheets/TR/2021/cg-draft" rel="stylesheet">
   <meta content="Bikeshed version 82ce88815, updated Thu Sep 7 16:33:55 2023 -0700" name="generator">
-  <link href="https://solid.github.io/security-bp/" rel="canonical">
-  <link href="https://solidproject.org/TR/solid.svg" rel="icon">
-  <meta content="a76624cbdc1f87c8a7ceb68288fc9195cb4e9885" name="document-revision">
+  <link href="https://solid.github.io/security-considerations/" rel="canonical">
+  <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
+  <meta content="4036162b50a367f5d56aed2d3339c881adee96e9" name="document-revision">
 <style>/* Boilerplate: style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
     color: var(--a-normal-text);
@@ -411,23 +411,23 @@ dfn > a.self-link::before      { content: "#"; }
 </style>
  <body class="h-entry">
   <div class="head">
-   <p data-fill-with="logo"><a class="logo" href="https://solidproject.org/TR/"> <img alt="Solid" src="https://solid.github.io/solid-oidc/solid.svg" width="72"> </a> </p>
+   <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Solid Security Considerations</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#CG-DRAFT">Draft Community Group Report</a>, <time class="dt-updated" datetime="2024-05-28">28 May 2024</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#CG-DRAFT">Draft Community Group Report</a>, <time class="dt-updated" datetime="2024-06-04">4 June 2024</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
      <dl>
       <dt>This version:
-      <dd><a class="u-url" href="https://solid.github.io/security-bp/">https://solid.github.io/security-bp/</a>
+      <dd><a class="u-url" href="https://solid.github.io/security-considerations/">https://solid.github.io/security-considerations/</a>
       <dt>Editor's Draft:
-      <dd><a href="https://solid.github.io/security-bp/">https://solid.github.io/security-bp/</a>
+      <dd><a href="https://solid.github.io/security-considerations/">https://solid.github.io/security-considerations/</a>
       <dt>Created:
       <dd>Feb 20, 2024
       <dt>Modified:
-      <dd>28 May 2024
+      <dd>4 June 2024
       <dt>Issue Tracking:
-      <dd><a href="https://github.com/solid/security-bp/issues/">GitHub</a>
+      <dd><a href="https://github.com/solid/security-considerations/issues/">GitHub</a>
       <dt class="editor">Editor:
       <dd class="editor p-author h-card vcard"><span class="p-name fn"><a href="https://elf-pavlik.hackers4peace.net/">elf Pavlik</a></span>
       <dt>Version:
@@ -468,7 +468,7 @@ to cite this document as other than work in progress.</p>
      <ol class="toc">
       <li><a href="#solid-oidc"><span class="secno">1.1</span> <span class="content">Solid OIDC</span></a>
       <li><a href="#serving-user-created-files"><span class="secno">1.2</span> <span class="content">Serving user-created files</span></a>
-      <li><a href="#considerations"><span class="secno">1.3</span> <span class="content">Considerations</span></a>
+      <li><a href="#protecting-webid-document"><span class="secno">1.3</span> <span class="content">Protecting WebID Document</span></a>
      </ol>
     <li>
      <a href="#references"><span class="secno"></span> <span class="content">References</span></a>
@@ -481,10 +481,10 @@ to cite this document as other than work in progress.</p>
    <h2 class="heading settled" data-level="1" id="attacks-and-mitigations"><span class="secno">1. </span><span class="content">Attacks and Mitigations</span><a class="self-link" href="#attacks-and-mitigations"></a></h2>
    <h3 class="heading settled" data-level="1.1" id="solid-oidc"><span class="secno">1.1. </span><span class="content">Solid OIDC</span><a class="self-link" href="#solid-oidc"></a></h3>
    <p><a data-link-type="biblio" href="#biblio-solidoidc" title="Solid OIDC">[Solid.OIDC]</a></p>
-   <div class="issue no-marker" id="issue-d41d8cd9"><a class="self-link" href="#issue-d41d8cd9"></a><a class="marker" href="https://github.com/solid/security-bp/issues/3" style="text-transform:none">solid/security-bp/3</a><a href="https://github.com/solid/security-bp/issues/3">Document attacks possible when WebID Document is hosted in a Solid Storage</a></div>
-   <div class="issue no-marker" id="issue-d41d8cd9①"><a class="self-link" href="#issue-d41d8cd9①"></a><a class="marker" href="https://github.com/solid/security-bp/issues/4" style="text-transform:none">solid/security-bp/4</a><a href="https://github.com/solid/security-bp/issues/4">Document attacks possible when hosting Soild-OIDC Provider on the same origin as storages</a></div>
-   <div class="issue no-marker" id="issue-d41d8cd9②"><a class="self-link" href="#issue-d41d8cd9②"></a><a class="marker" href="https://github.com/solid/security-bp/issues/5" style="text-transform:none">solid/security-bp/5</a><a href="https://github.com/solid/security-bp/issues/5">Document attacks possible when Solid-OIDC issuer is compromised</a></div>
-   <div class="issue no-marker" id="issue-d41d8cd9③"><a class="self-link" href="#issue-d41d8cd9③"></a><a class="marker" href="https://github.com/solid/security-bp/issues/6" style="text-transform:none">solid/security-bp/6</a><a href="https://github.com/solid/security-bp/issues/6">Document possible phishing attacks during authentication with Solid-OIDC</a></div>
+   <div class="issue no-marker" id="issue-d41d8cd9"><a class="self-link" href="#issue-d41d8cd9"></a><a class="marker" href="https://github.com/solid/security-considerations/issues/3" style="text-transform:none">solid/security-considerations/3</a><a href="https://github.com/solid/security-considerations/issues/3">Document attacks possible when WebID Document is hosted in a Solid Storage</a></div>
+   <div class="issue no-marker" id="issue-d41d8cd9①"><a class="self-link" href="#issue-d41d8cd9①"></a><a class="marker" href="https://github.com/solid/security-considerations/issues/4" style="text-transform:none">solid/security-considerations/4</a><a href="https://github.com/solid/security-considerations/issues/4">Document attacks possible when hosting Soild-OIDC Provider on the same origin as storages</a></div>
+   <div class="issue no-marker" id="issue-d41d8cd9②"><a class="self-link" href="#issue-d41d8cd9②"></a><a class="marker" href="https://github.com/solid/security-considerations/issues/5" style="text-transform:none">solid/security-considerations/5</a><a href="https://github.com/solid/security-considerations/issues/5">Document attacks possible when Solid-OIDC issuer is compromised</a></div>
+   <div class="issue no-marker" id="issue-d41d8cd9③"><a class="self-link" href="#issue-d41d8cd9③"></a><a class="marker" href="https://github.com/solid/security-considerations/issues/6" style="text-transform:none">solid/security-considerations/6</a><a href="https://github.com/solid/security-considerations/issues/6">Document possible phishing attacks during authentication with Solid-OIDC</a></div>
    <h3 class="heading settled" data-level="1.2" id="serving-user-created-files"><span class="secno">1.2. </span><span class="content">Serving user-created files</span><a class="self-link" href="#serving-user-created-files"></a></h3>
    <p>When Solid Servers <a data-link-type="biblio" href="#biblio-solidprotocol" title="Solid Protocol">[Solid.Protocol]</a> serve files created by different users, they break the common Web assumption that files and/or applications served within the same origin are automatically equally trustworthy.</p>
    <p>An attacker could be any agent — human, browser, browser-based application,
@@ -545,9 +545,7 @@ benign application.</p>
     <li data-md>
      <p>The attacker can use the credentials to log in with the IDP of the victim.</p>
    </ol>
-   <h3 class="heading settled" data-level="1.3" id="considerations"><span class="secno">1.3. </span><span class="content">Considerations</span><a class="self-link" href="#considerations"></a></h3>
-   <p>Servers are strongly encouraged to consider the countermeasures in the context of the use cases they want to enable or disable on a given storage. For instance, using <code>Content-Security-Policy: sandbox</code> will universally prohibit various functionalities for applications, including but not limited to accessing local storage, executing scripts, using forms, interacting with plugins, or including external content. This broad range of restrictions may not be desirable for various categories of applications that rely on client-side storage mechanisms, collaborative features, or dynamic content interaction.</p>
-   <h4 class="heading settled" data-level="1.3.1" id="serving-user-created-files-countermeasures"><span class="secno">1.3.1. </span><span class="content">Countermeasures</span><a class="self-link" href="#serving-user-created-files-countermeasures"></a></h4>
+   <h4 class="heading settled" data-level="1.2.3" id="serving-user-created-files-countermeasures"><span class="secno">1.2.3. </span><span class="content">Countermeasures</span><a class="self-link" href="#serving-user-created-files-countermeasures"></a></h4>
    <ul>
     <li data-md>
      <p>Servers are encouraged to apply security measures when serving user-created files.</p>
@@ -556,6 +554,47 @@ benign application.</p>
     <li data-md>
      <p>As one possible countermeasure, servers could add a [<code>Content-Security-Policy: sandbox</code>](https://www.w3.org/TR/CSP3/#directive-sandbox) header to artificially enable <code>same-origin</code> security policies for files served on the same origin.</p>
    </ul>
+   <h5 class="heading settled" data-level="1.2.3.1" id="considerations"><span class="secno">1.2.3.1. </span><span class="content">Considerations</span><a class="self-link" href="#considerations"></a></h5>
+   <p>Servers are strongly encouraged to consider the countermeasures in the context of the use cases they want to enable or disable on a given storage. For instance, using <code>Content-Security-Policy: sandbox</code> will universally prohibit various functionalities for applications, including but not limited to accessing local storage, executing scripts, using forms, interacting with plugins, or including external content. This broad range of restrictions may not be desirable for various categories of applications that rely on client-side storage mechanisms, collaborative features, or dynamic content interaction.</p>
+   <h3 class="heading settled" data-level="1.3" id="protecting-webid-document"><span class="secno">1.3. </span><span class="content">Protecting WebID Document</span><a class="self-link" href="#protecting-webid-document"></a></h3>
+   <p>Solid access policy enforcement heavily relies on the identities of agents. Requesting Parties are identified
+with <a data-link-type="biblio" href="#biblio-webid" title="WebID 1.0">[WebID]</a> and applications with ClientID <a data-link-type="biblio" href="#biblio-solidoidc" title="Solid OIDC">[Solid.OIDC]</a>.
+User’s WebID Document includes trust anchors, like designation to their <a data-link-type="biblio" href="#biblio-solidoidc" title="Solid OIDC">[Solid.OIDC]</a> Provider (aka. issuer).
+In other approaches, public keys could be published or discoverable via the user’s WebID Document.</p>
+   <h4 class="heading settled" data-level="1.3.1" id="fully-impersonate-the-user"><span class="secno">1.3.1. </span><span class="content">Fully impersonate the user</span><a class="self-link" href="#fully-impersonate-the-user"></a></h4>
+   <p>If the malicious app can write or append to the user’s WebID, it could inject trust anchors, allowing complete impersonation.</p>
+   <h5 class="heading settled" data-level="1.3.1.1" id="prerequisites②"><span class="secno">1.3.1.1. </span><span class="content">Prerequisites</span><a class="self-link" href="#prerequisites②"></a></h5>
+   <ul>
+    <li data-md>
+     <p>Authorization system depends on a specific trust anchor in the user’s WebID Document.
+For example, <a data-link-type="biblio" href="#biblio-solidoidc" title="Solid OIDC">[Solid.OIDC]</a> issuer designation or pubic keys/keyset.</p>
+    <li data-md>
+     <p>User authorizes a malicious application to write or append to their WebID Document.</p>
+   </ul>
+   <h5 class="heading settled" data-level="1.3.1.2" id="attack②"><span class="secno">1.3.1.2. </span><span class="content">Attack</span><a class="self-link" href="#attack②"></a></h5>
+   <ul>
+    <li data-md>
+     <p>The attacker publishes a malicious application, such as generating cool AI avatars and setting them in the user’s profile.</p>
+    <li data-md>
+     <p>User authenticates with the malicious application</p>
+    <li data-md>
+     <p>If the access control system enforces client constraints, the user also authorizes the application to write or append to their WebID Document.</p>
+    <li data-md>
+     <p>Application injects attacker’s trust anchor into the user’s WebID Document</p>
+    <li data-md>
+     <p>The attacker can completely impersonate the user, which allows full access to all the data owned by the user.
+As well as any data shared with that user by others, with the full extent of access they granted to the user.</p>
+   </ul>
+   <h4 class="heading settled" data-level="1.3.2" id="countermeasures"><span class="secno">1.3.2. </span><span class="content">Countermeasures</span><a class="self-link" href="#countermeasures"></a></h4>
+   <ul>
+    <li data-md>
+     <p>There is no requirement to expose WebID Document via <a data-link-type="biblio" href="#biblio-solidprotocol" title="Solid Protocol">[Solid.Protocol]</a> and host it in Solid Storage.
+WebID providers can support only a set of discovery features relying on the WebID document and provide
+highly secured interface to change it, possibly requiring two-factor authentication.</p>
+   </ul>
+   <h5 class="heading settled" data-level="1.3.2.1" id="considerations①"><span class="secno">1.3.2.1. </span><span class="content">Considerations</span><a class="self-link" href="#considerations①"></a></h5>
+    Users need a way to manage their social profiles, approaches like linking from the user’s WebID Document to
+less protected vcard are available to accomplish it without opening discussed attack vectors. 
   </main>
 <script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script>
   <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
@@ -569,4 +608,6 @@ benign application.</p>
    <dd>Sarven Capadisli; Tim Berners-Lee; Kjetil Kjernsmo. <a href="https://solidproject.org/TR/protocol"><cite>Solid Protocol</cite></a>. URL: <a href="https://solidproject.org/TR/protocol">https://solidproject.org/TR/protocol</a>
    <dt id="biblio-solidos">[SolidOS]
    <dd>SolidOS Team. <a href="https://solidos.solidcommunity.net/"><cite>SolidOS</cite></a>. URL: <a href="https://solidos.solidcommunity.net/">https://solidos.solidcommunity.net/</a>
+   <dt id="biblio-webid">[WebID]
+   <dd>Andrei Sambra; Henry Story; Tim Berners-Lee. <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/"><cite>WebID 1.0</cite></a>. URL: <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/">https://www.w3.org/2005/Incubator/webid/spec/identity/</a>
   </dl>
